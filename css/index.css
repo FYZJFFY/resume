@@ -11,10 +11,16 @@ p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
     padding: 0;
     margin: 0;
 }
+ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .topNavBar{
     padding: 22px 0;
     position: fixed;
     width: 100%;
+    z-index: 99;
 }
 .topNavBar-inner{
     padding: 0 16px;
@@ -76,11 +82,12 @@ p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
 }
 .user-card{
     max-width: 930px;
-    border: 1px solid #000;
     background: #fff;
-    margin: 0 auto
+    margin: 0 auto;
+    margin-top:-370px;
+    box-shadow: 1px 1px 6px -1px rgba(0,0,0,0.67);
+    border-radius: 3px;
 }
-
 .user-card .text .hello{
     color: #fff;
     font-weight: bold;
@@ -90,6 +97,7 @@ p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
     position: relative;
     top: 100%;
     display: inline-block;
+    line-height: 20px;
 }
 .user-card .text .hello .triangle{
     width:0px;
@@ -154,4 +162,147 @@ p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
     width: 30px;
     height: 30px;
     fill: white;
+}
+main .btn-wrapper{
+    text-align: center;
+    max-width: 930px;
+    margin: 0 auto;
+    color: #000;
+}
+main .btn-wrapper a{
+    color: #000;
+    border:1px solid #cbcdcf;
+    padding: 20px 57px ;
+    display: inline-block;
+    line-height: 1.1;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    transition: box-shadow 0.2s;
+}
+main .btn-wrapper a:hover{
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+
+}
+main .intro{
+    text-align: center;
+    max-width: 930px;
+    margin: 0 auto;
+    font-family: "楷体";
+    font-size: 18px;
+}
+.skills{
+    max-width: 930px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+.skills ol{
+    background: #fff;
+    padding: 42px 50px 10px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
+}
+.skills h2{
+    text-align: center;
+}
+.skills li{
+    float: left;
+    list-style: none;
+    width: 48%;
+}
+.skills li:nth-child(even){
+    float: right;
+}
+.skills .skill-bar{
+    width: 100%;
+    height: 6px;
+    background: #FAE1E1;
+    border-radius: 5px;
+    margin: 4px 0 40px; 
+}
+.skills .skill-bar>div{
+    width: 50%;
+    height: 6px;
+    background: #E6686A;
+    border-radius: 5px;
+}
+.skills h5{
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.1;
+}
+.produ-List{
+    width: 930px;
+    margin: 0 auto;
+    text-align: center;
+}
+.produ-List h2{
+    text-align: center;
+    margin-top: 60px;
+}
+.produ-List ol{
+    padding-top: 50px;
+    display: inline-block;
+}
+.produ-List ol li{
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.produ-List ol li:first-child{
+    margin-left: 0;
+}
+.produ-List nav{
+    display: inline-block;
+    vertical-align: top;
+}
+.produ-List .lines{
+    height: 6px;
+    background: #fff;
+    margin-top: 6px;
+    border-radius: 5px;
+    margin-bottom: 28px;
+    position: relative;
+}
+.produ-List .bar-inner{
+    position: absolute;
+    height: 100%;
+    background: #E6686A;
+    border-radius: 5px;
+}
+.produ-List .lines-1 .bar-inner{
+    width: 34px;
+    left: 0px;
+}
+.produ-List .lines-2 .bar-inner{
+    width: 50px;
+    left: 64px;
+}
+.produ-List .lines-3 .bar-inner{
+    width: 50px;
+    left: 135px;
+}
+.produ-List .jobs{
+    max-width: 930px;
+    margin: 0 auto;
+    height: 597px;
+    position: relative;
+    margin-bottom: 100px;
+}
+.produ-List .big{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.produ-List .small1{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.produ-List .small2{
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
