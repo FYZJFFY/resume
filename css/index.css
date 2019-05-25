@@ -27,25 +27,75 @@ ol{
 }
 .topNavBar nav>ul>li{
     float: left;
-    color: #fff;
+    /* color: #fff; */
     margin-left: 17px;
     margin-right: 17px;
+    position: relative;
 }
-.topNavBar nav{
-    padding-top: 4px;
+.topNavBar li.active > .submenu{
+    display: block;
+    animation: submenuSlide 0.1s;
+}
+@keyframes submenuSlide{
+    0%{
+        margin-right: 60%;
+    }
+    100%{
+        margin-right:0;
+    }
+}
+.topNavBar{
+    color: #b7b7b7;
+
+    transition:all 0.5s ;
+}
+.topNavBar.sticky{
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: #3d4451;
+
 }
 .topNavBar nav>ul>li>a{
     font-size: 12px;
-    color: #81868D;
+    color: inherit;
     font-weight: bold;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     display: block;
     padding-top: 5px;
     padding-bottom: 5px;
+    position: relative;
 }
-.topNavBar nav>ul>li>a:hover{
-    border-bottom: 3px solid #e8676b;
+.topNavBar nav>ul>li.active>a:after{
+    display: block;
+    content: "";
+    height:3px;
+    background:#e8676b;
+    width:100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    animation: menuSlide 0.3s;
+}
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    white-space: nowrap;
+    background: #fff;
+}
+/* .topNavBar .submenu.active{
+    display: block;
+} */
+@keyframes menuSlide{
+    0%{
+        width:0;
+    }
+    100%{
+        width: 100%;
+    }
 }
 .topNavBar .logo{
     float: left;

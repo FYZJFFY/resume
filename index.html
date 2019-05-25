@@ -11,24 +11,85 @@
                fill: currentColor;
                overflow: hidden;
             }
+            .site-welcome{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background: gray;
+                z-index: 100;
+                display: none;
+            }
+            .site-welcome.active{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .site-welcome .loading{
+                width: 200px;
+                height:200px;
+            }
+            .site-welcome .loading::before,.site-welcome .loading::after{
+                content: '';
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                background: black;
+                border-radius: 50%;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+                margin: auto;
+                animation: loadingAnimate 1.5s linear infinite;
+            }
+            .site-welcome .loading::after{
+                animation-delay: 0.7s;
+            }
+            @keyframes loadingAnimate{
+                0%{
+                    width: 0px;height: 0px;opacity: 1;
+                }
+                100%{
+                    width: 100px;height: 100px;opacity: 0;;
+                }
+            } 
         </style>
     </head>
     <body>
-        <div class="topNavBar clearfix">
-            <div class="topNavBar-inner">
+        <div id="siteWelcome" class="site-welcome active">
+            <div class="loading"></div>
+        </div>
+        <div id="topNavBar" class="topNavBar clearfix">
+            <div class="topNavBar-inner clearfix ">
                 <a href="#" class="logo" alt="logo">
                     <span class="rs">RS</span><span class="card">card</span>
                 </a>
                 <nav>
                     <ul class="clearfix">
-                        <li><a href="#">关于</a></li>
-                        <li><a href="#">技能</a></li>
-                        <li><a href="#">作品</a></li>
-                        <li><a href="#">经验</a></li>
-                        <li><a href="#">博客</a></li>
-                        <li><a href="#">日历</a></li>
-                        <li><a href="#">联系方式</a></li>
-                        <li><a href="#">其他</a></li> 
+                        <li class="menuTrigger"><a href="#siteAbout">关于</a></li>
+                        <li class="menuTrigger"><a href="#siteSkill">技能</a></li>
+                        <li class="menuTrigger">
+                            <a href="#sitePro">作品</a>
+                            <ul class="submenu">
+                                <li>作品1</li>
+                                <li>作品2</li>
+                                <li>作品3</li>
+                            </ul> 
+                        </li>
+                        <li class="menuTrigger"><a href="#">经验</a></li>
+                        <li class="menuTrigger">
+                            <a href="#">博客</a>
+                            <ul class="submenu">
+                                <li>博客1</li>
+                                <li>博客2</li>
+                                <li>博客3</li>
+                            </ul> 
+                        </li>
+                        <li class="menuTrigger"><a href="#">日历</a></li>
+                        <li class="menuTrigger"><a href="#">联系方式</a></li>
+                        <li class="menuTrigger"><a href="#">其他</a></li> 
                     </ul>
                 </nav>
             </div>
@@ -39,7 +100,7 @@
             </div>
         </div>
         <main>
-            <div class="user-card">
+            <div class="user-card" id="siteAbout">
                 <div class="clearfix pictureAndText">
                     <div class="picture">
                         <img src="image/avatar.jpg" alt="头像">
@@ -88,7 +149,7 @@
                 技能：前端开发，小程序开发
             </p>
         </main>
-        <section class="skills">
+        <section class="skills" id="siteSkill">
             <h2>专业技能</h2>
             <ol class="clearfix"> 
                 <li>
@@ -129,7 +190,7 @@
                 </li>
             </ol>
         </section>
-        <section class="produ-List">
+        <section class="produ-List" id="sitePro">
             <h2>作品集</h2>
             <nav>
                 <ol class="clearfix">
@@ -166,6 +227,46 @@
                         console.log("di");
 
                         portfolioBar.className ="lines lines-3";
+                    }
+                    var siteWelcome = document.getElementById("siteWelcome");
+                    setTimeout(function(){
+                        siteWelcome.classList.remove("active");
+                    },2000);
+
+                    window.onscroll = function(e){
+                        if(window.scrollY > 0){
+                            topNavBar.classList.add("sticky");
+                        }else{
+                            topNavBar.classList.remove("sticky");
+                        }
+                    }
+
+                    var liTags = document.getElementsByClassName("menuTrigger");
+                    for(let i = 0;i<liTags.length;i++){
+                        liTags[i].onmouseenter = function(e){
+                            let li = e.currentTarget;
+                            let ul = li.getElementsByTagName("ul")[0];
+                            li.classList.add("active");
+                        }
+
+                        liTags[i].onmouseleave = function(e){
+                            let li = e.currentTarget;
+                            let ul = li.getElementsByTagName("ul")[0];
+                            li.classList.remove("active");
+                        }
+                    }
+
+                    let aTags = document.querySelectorAll("#topNavBar li a");
+                    for(let i =0;i<aTags.length;i++){
+                        aTags[i].onclick = function(e){
+                            e.preventDefault();
+                            console.log(e.target.getAttribute("href"));
+                            let href = e.target.getAttribute("href");
+                            let node = document.querySelector(href);
+                            console.log(node);
+                            var top = node.offsetTop;
+                            window.scrollTo(0,top-80); 
+                        }
                     }
                 </script>
         </section>
