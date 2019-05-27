@@ -58,9 +58,9 @@
         </style>
     </head>
     <body>
-        <div id="siteWelcome" class="site-welcome active">
+        <!-- <div id="siteWelcome" class="site-welcome active">
             <div class="loading"></div>
-        </div>
+        </div> -->
         <div id="topNavBar" class="topNavBar clearfix">
             <div class="topNavBar-inner clearfix ">
                 <a href="#" class="logo" alt="logo">
@@ -100,7 +100,7 @@
             </div>
         </div>
         <main>
-            <div class="user-card" id="siteAbout">
+            <div data-scroll class="user-card" id="siteAbout">
                 <div class="clearfix pictureAndText">
                     <div class="picture">
                         <img src="image/avatar.jpg" alt="头像">
@@ -141,15 +141,15 @@
                         </svg> 
                     </a>
             </div>
-            <div class="btn-wrapper">
+            <div  class="btn-wrapper">
                 <a href="#" class="button">下载简历</a>
             </div>
-            <p class="intro">
+            <p  class="intro">
                 冯方圆， 初级前端工程师，目前就只于杭州英涉时装。<br>
                 技能：前端开发，小程序开发
             </p>
         </main>
-        <section class="skills" id="siteSkill">
+        <section data-scroll class="skills" id="siteSkill">
             <h2>专业技能</h2>
             <ol class="clearfix"> 
                 <li>
@@ -190,7 +190,7 @@
                 </li>
             </ol>
         </section>
-        <section class="produ-List" id="sitePro">
+        <section data-scroll class="produ-List" id="sitePro">
             <h2>作品集</h2>
             <nav>
                 <ol class="clearfix">
@@ -213,6 +213,7 @@
                     <img src="image/3.jpg" alt="图片3">
                 </div>
             </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
             <script>
                     portfolio1.onclick=function(){
                         portfolioBar.className ="lines lines-1";
@@ -229,9 +230,12 @@
                         portfolioBar.className ="lines lines-3";
                     }
                     var siteWelcome = document.getElementById("siteWelcome");
+                    // setTimeout(function(){
+                    //     siteWelcome.classList.remove("active");
+                    // },2000);
                     setTimeout(function(){
-                        siteWelcome.classList.remove("active");
-                    },2000);
+                        yyy();
+                    },0);
 
                     window.onscroll = function(e){
                         if(window.scrollY > 0){
@@ -239,8 +243,26 @@
                         }else{
                             topNavBar.classList.remove("sticky");
                         }
+                        yyy();
                     }
-
+                    function yyy(){
+                        var dataScrollList = document.querySelectorAll("[data-scroll]");
+                        let currentTop = window.scrollY;
+                        let nearestIndex = 0;
+                        for(let i = 0;i<dataScrollList.length;i++){
+                            if(Math.abs(dataScrollList[i].offsetTop-window.scrollY) < Math.abs(dataScrollList[nearestIndex].offsetTop - window.scrollY)){
+                                nearestIndex = i;
+                            }
+                        }
+                        
+                        var id = dataScrollList[nearestIndex].id;
+                        dataScrollList[nearestIndex].classList.add("active");
+                        var brothers = document.querySelector("a[href = '#"+id+"']").parentNode.parentNode.children;
+                        for(let i = 0;i<brothers.length;i++){
+                            brothers[i].classList.remove("highlight");
+                        }
+                        document.querySelector("a[href = '#"+id+"']").parentNode.classList.add("highlight");
+                    }
                     var liTags = document.getElementsByClassName("menuTrigger");
                     for(let i = 0;i<liTags.length;i++){
                         liTags[i].onmouseenter = function(e){
@@ -263,9 +285,46 @@
                             console.log(e.target.getAttribute("href"));
                             let href = e.target.getAttribute("href");
                             let node = document.querySelector(href);
-                            console.log(node);
                             var top = node.offsetTop;
-                            window.scrollTo(0,top-80); 
+
+                            var targetTop = top-80;
+                            var currentTop = window.scrollY;
+                            var scrollLength = targetTop-currentTop;
+                            var scrollNum = 80;
+
+
+                            function animate(time) {
+                                requestAnimationFrame(animate);
+                                TWEEN.update(time);
+                            }
+                            requestAnimationFrame(animate);
+
+                            // let id = setInterval(function(){
+                            //     console.log(11);
+                            //     if(scrollNum == 0){
+                            //         clearInterval(id);
+                            //         return ;
+                            //     }
+                            //     currentTop = currentTop+scrollLengthEveryTime;
+                            //     window.scrollTo(0,currentTop);
+                            //     scrollNum--;
+                            // },20);
+
+                            var t = Math.abs(((targetTop - currentTop)/100)*300);
+                            if(t>500){
+                                t = 500;
+                            }
+                                
+
+                            var coords = {  y: currentTop }; 
+                            var tween = new TWEEN.Tween(coords) 
+                                    .to({ y: targetTop }, 500) 
+                                    .easing(TWEEN.Easing.Quadratic.In) 
+                                    .onUpdate(function() {
+                                        console.log("y:"+coords.y);
+                                        window.scrollTo(0,coords.y);
+                                    })
+                                    .start(); 
                         }
                     }
                 </script>
