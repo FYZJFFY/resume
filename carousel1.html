@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        .images{
+            display: flex;
+            justify-content: flex-start;
+            height:225px;
+            transition: all 0.5s;
+        }
+        .window{
+            width: 300px;
+            height: 225px;
+            overflow: hidden;
+        }
+        .btns>span{
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .btns>span.active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="window" class="window">
+        <div id="images" class="images">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560088812132&di=9c5a47185aca70daa3c4740d2ba2469f&imgtype=0&src=http%3A%2F%2Fpicm.bbzhi.com%2Fdongwubizhi%2F1600xiaogouxiezhen%2F1600xiaogouxiezhen_113863_m.jpg" alt="" width=300>
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560088812131&di=4c6b599440fe521f4d319939203c40b9&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201409%2F21%2F20140921140923_GPLWi.jpeg" alt="" width=300>
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560088812130&di=7772ee2ecdfd7892754c1b4971459e56&imgtype=0&src=http%3A%2F%2Fcdn0.haibao.cn%2Fstore%2Fbigfiles%2F200841%2F1224046916.0534.jpg" alt="" width=300>
+        </div>
+    </div>
+    <div id="btns" class="btns">
+        <span>图1</span>
+        <span>图2</span>
+        <span>图3</span>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        !function(){
+            $("#btns").on("click",">span",function(){
+                var index = $(this).index();
+                var distance = index*300;
+                $(this).addClass("active").siblings().removeClass("active");
+                $("#images").css({
+                    "transform":'translateX(-'+distance+'px)'
+                });
+                n = index;
+            });
+            var size = $("#btns>span").length;
+            var n = 0;
+            $("#btns>span").eq(n%3).trigger("click");
+            var timerId = startTimer();
+
+            $(".window").on("mouseleave",function(){
+                timerId = startTimer();
+            });
+
+            $(".window").on("mouseenter",function(){
+                clearInterval(timerId);
+            });
+
+
+            function playSlide(index){
+                $("#btns>span").eq(index).trigger("click");
+            }
+            function startTimer(){
+                setInterval(function(){
+                    n++;
+                    playSlide(n%3);
+                },3000);
+            }
+        }.call();
+    </script>
+</body>
+</html>
