@@ -1,17 +1,21 @@
 <!DOCTYP html>
-<html>
+    <html>
+
     <head>
         <title>简历-冯方圆</title>
         <link rel="stylesheet" href="css/index.css">
         <script src="//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.1/css/swiper.min.css">
         <style type="text/css">
             .icon {
-               width: 1em; height: 1em;
-               vertical-align: -0.15em;
-               fill: currentColor;
-               overflow: hidden;
+                width: 1em;
+                height: 1em;
+                vertical-align: -0.15em;
+                fill: currentColor;
+                overflow: hidden;
             }
-            .site-welcome{
+
+            .site-welcome {
                 position: fixed;
                 width: 100%;
                 height: 100%;
@@ -21,16 +25,20 @@
                 z-index: 100;
                 display: none;
             }
-            .site-welcome.active{
+
+            .site-welcome.active {
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            .site-welcome .loading{
+
+            .site-welcome .loading {
                 width: 200px;
-                height:200px;
+                height: 200px;
             }
-            .site-welcome .loading::before,.site-welcome .loading::after{
+
+            .site-welcome .loading::before,
+            .site-welcome .loading::after {
                 content: '';
                 position: absolute;
                 width: 0px;
@@ -44,19 +52,28 @@
                 margin: auto;
                 animation: loadingAnimate 1.5s linear infinite;
             }
-            .site-welcome .loading::after{
+
+            .site-welcome .loading::after {
                 animation-delay: 0.7s;
             }
-            @keyframes loadingAnimate{
-                0%{
-                    width: 0px;height: 0px;opacity: 1;
+
+            @keyframes loadingAnimate {
+                0% {
+                    width: 0px;
+                    height: 0px;
+                    opacity: 1;
                 }
-                100%{
-                    width: 100px;height: 100px;opacity: 0;;
+
+                100% {
+                    width: 100px;
+                    height: 100px;
+                    opacity: 0;
+                    ;
                 }
-            } 
+            }
         </style>
     </head>
+
     <body>
         <!-- <div id="siteWelcome" class="site-welcome active">
             <div class="loading"></div>
@@ -76,7 +93,7 @@
                                 <li>作品1</li>
                                 <li>作品2</li>
                                 <li>作品3</li>
-                            </ul> 
+                            </ul>
                         </li>
                         <li class="menuTrigger"><a href="#">经验</a></li>
                         <li class="menuTrigger">
@@ -85,16 +102,16 @@
                                 <li>博客1</li>
                                 <li>博客2</li>
                                 <li>博客3</li>
-                            </ul> 
+                            </ul>
                         </li>
                         <li class="menuTrigger"><a href="#">日历</a></li>
                         <li class="menuTrigger"><a href="#">联系方式</a></li>
-                        <li class="menuTrigger"><a href="#">其他</a></li> 
+                        <li class="menuTrigger"><a href="#">其他</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="banner" >
+        <div class="banner">
             <div class="mask">
 
             </div>
@@ -122,41 +139,41 @@
                             <dt>手机号码</dt>
                             <dd>18758177547</dd>
                         </dl>
-                    </div> 
+                    </div>
                 </div>
                 <footer class="media">
-                    <a >
+                    <a>
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-csdn"></use>
-                        </svg> 
+                        </svg>
                     </a>
                     <a href="https://github.com/FYZJFFY" target="_blank">
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-github"></use>
-                        </svg> 
+                        </svg>
                     </a>
                     <a href="#">
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-weibo-copy"></use>
-                        </svg> 
+                        </svg>
                     </a>
             </div>
-            <div  class="btn-wrapper">
+            <div class="btn-wrapper">
                 <a href="#" class="button">下载简历</a>
             </div>
-            <p  class="intro">
+            <p class="intro">
                 冯方圆， 初级前端工程师，目前就只于杭州英涉时装。<br>
                 技能：前端开发，小程序开发
             </p>
         </main>
         <section data-scroll class="skills" id="siteSkill">
             <h2>专业技能</h2>
-            <ol class="clearfix"> 
+            <ol class="clearfix">
                 <li>
-                    <h5>HTML 5 &amp; CSS</h5> 
+                    <h5>HTML 5 &amp; CSS</h5>
                     <div class="skill-bar">
                         <div></div>
-                    </div>   
+                    </div>
                 </li>
                 <li>
                     <h5>JavaScript</h5>
@@ -202,7 +219,26 @@
                     <div class="bar-inner"></div>
                 </div>
             </nav>
-            <div  class="jobs"> 
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+            <style>
+
+            </style>
+            <!-- <div class="jobs">
                 <div class="big">
                     <img src="image/1.jpg" alt="图片1">
                 </div>
@@ -212,123 +248,152 @@
                 <div class="small2">
                     <img src="image/3.jpg" alt="图片3">
                 </div>
-            </div>
+            </div> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.1/js/swiper.min.js"></script>
             <script>
-                    portfolio1.onclick=function(){
-                        portfolioBar.className ="lines lines-1";
-                        console.log("di");
-                    }
-                    portfolio2.onclick=function(){
-                        console.log("di");
+                portfolio1.onclick = function () {
+                    portfolioBar.className = "lines lines-1";
+                    console.log("di");
+                }
+                portfolio2.onclick = function () {
+                    console.log("di");
 
-                        portfolioBar.className ="lines lines-2";
-                    }
-                    portfolio3.onclick=function(){
-                        console.log("di");
+                    portfolioBar.className = "lines lines-2";
+                }
+                portfolio3.onclick = function () {
+                    console.log("di");
 
-                        portfolioBar.className ="lines lines-3";
-                    }
-                    var siteWelcome = document.getElementById("siteWelcome");
-                    // setTimeout(function(){
-                    //     siteWelcome.classList.remove("active");
-                    // },2000);
-                    setTimeout(function(){
-                        yyy();
-                    },0);
+                    portfolioBar.className = "lines lines-3";
+                }
+                var siteWelcome = document.getElementById("siteWelcome");
+                // setTimeout(function(){
+                //     siteWelcome.classList.remove("active");
+                // },2000);
+                setTimeout(function () {
+                    yyy();
+                }, 0);
 
-                    window.onscroll = function(e){
-                        if(window.scrollY > 0){
-                            topNavBar.classList.add("sticky");
-                        }else{
-                            topNavBar.classList.remove("sticky");
-                        }
-                        yyy();
+                window.onscroll = function (e) {
+                    if (window.scrollY > 0) {
+                        topNavBar.classList.add("sticky");
+                    } else {
+                        topNavBar.classList.remove("sticky");
                     }
-                    function yyy(){
-                        var dataScrollList = document.querySelectorAll("[data-scroll]");
-                        let currentTop = window.scrollY;
-                        let nearestIndex = 0;
-                        for(let i = 0;i<dataScrollList.length;i++){
-                            if(Math.abs(dataScrollList[i].offsetTop-window.scrollY) < Math.abs(dataScrollList[nearestIndex].offsetTop - window.scrollY)){
-                                nearestIndex = i;
-                            }
-                        }
-                        
-                        var id = dataScrollList[nearestIndex].id;
-                        dataScrollList[nearestIndex].classList.add("active");
-                        var brothers = document.querySelector("a[href = '#"+id+"']").parentNode.parentNode.children;
-                        for(let i = 0;i<brothers.length;i++){
-                            brothers[i].classList.remove("highlight");
-                        }
-                        document.querySelector("a[href = '#"+id+"']").parentNode.classList.add("highlight");
-                    }
-                    var liTags = document.getElementsByClassName("menuTrigger");
-                    for(let i = 0;i<liTags.length;i++){
-                        liTags[i].onmouseenter = function(e){
-                            let li = e.currentTarget;
-                            let ul = li.getElementsByTagName("ul")[0];
-                            li.classList.add("active");
-                        }
+                    yyy();
+                }
 
-                        liTags[i].onmouseleave = function(e){
-                            let li = e.currentTarget;
-                            let ul = li.getElementsByTagName("ul")[0];
-                            li.classList.remove("active");
+                function yyy() {
+                    var dataScrollList = document.querySelectorAll("[data-scroll]");
+                    let currentTop = window.scrollY;
+                    let nearestIndex = 0;
+                    for (let i = 0; i < dataScrollList.length; i++) {
+                        if (Math.abs(dataScrollList[i].offsetTop - window.scrollY) < Math.abs(dataScrollList[
+                                nearestIndex].offsetTop - window.scrollY)) {
+                            nearestIndex = i;
                         }
                     }
 
-                    let aTags = document.querySelectorAll("#topNavBar li a");
-                    for(let i =0;i<aTags.length;i++){
-                        aTags[i].onclick = function(e){
-                            e.preventDefault();
-                            console.log(e.target.getAttribute("href"));
-                            let href = e.target.getAttribute("href");
-                            let node = document.querySelector(href);
-                            var top = node.offsetTop;
+                    var id = dataScrollList[nearestIndex].id;
+                    dataScrollList[nearestIndex].classList.add("active");
+                    var brothers = document.querySelector("a[href = '#" + id + "']").parentNode.parentNode.children;
+                    for (let i = 0; i < brothers.length; i++) {
+                        brothers[i].classList.remove("highlight");
+                    }
+                    document.querySelector("a[href = '#" + id + "']").parentNode.classList.add("highlight");
+                }
+                var liTags = document.getElementsByClassName("menuTrigger");
+                for (let i = 0; i < liTags.length; i++) {
+                    liTags[i].onmouseenter = function (e) {
+                        let li = e.currentTarget;
+                        let ul = li.getElementsByTagName("ul")[0];
+                        li.classList.add("active");
+                    }
 
-                            var targetTop = top-80;
-                            var currentTop = window.scrollY;
-                            var scrollLength = targetTop-currentTop;
-                            var scrollNum = 80;
+                    liTags[i].onmouseleave = function (e) {
+                        let li = e.currentTarget;
+                        let ul = li.getElementsByTagName("ul")[0];
+                        li.classList.remove("active");
+                    }
+                }
+
+                let aTags = document.querySelectorAll("#topNavBar li a");
+                for (let i = 0; i < aTags.length; i++) {
+                    aTags[i].onclick = function (e) {
+                        e.preventDefault();
+                        console.log(e.target.getAttribute("href"));
+                        let href = e.target.getAttribute("href");
+                        let node = document.querySelector(href);
+                        var top = node.offsetTop;
+
+                        var targetTop = top - 80;
+                        var currentTop = window.scrollY;
+                        var scrollLength = targetTop - currentTop;
+                        var scrollNum = 80;
 
 
-                            function animate(time) {
-                                requestAnimationFrame(animate);
-                                TWEEN.update(time);
-                            }
+                        function animate(time) {
                             requestAnimationFrame(animate);
-
-                            // let id = setInterval(function(){
-                            //     console.log(11);
-                            //     if(scrollNum == 0){
-                            //         clearInterval(id);
-                            //         return ;
-                            //     }
-                            //     currentTop = currentTop+scrollLengthEveryTime;
-                            //     window.scrollTo(0,currentTop);
-                            //     scrollNum--;
-                            // },20);
-
-                            var t = Math.abs(((targetTop - currentTop)/100)*300);
-                            if(t>500){
-                                t = 500;
-                            }
-                                
-
-                            var coords = {  y: currentTop }; 
-                            var tween = new TWEEN.Tween(coords) 
-                                    .to({ y: targetTop }, 500) 
-                                    .easing(TWEEN.Easing.Quadratic.In) 
-                                    .onUpdate(function() {
-                                        console.log("y:"+coords.y);
-                                        window.scrollTo(0,coords.y);
-                                    })
-                                    .start(); 
+                            TWEEN.update(time);
                         }
+                        requestAnimationFrame(animate);
+
+                        // let id = setInterval(function(){
+                        //     console.log(11);
+                        //     if(scrollNum == 0){
+                        //         clearInterval(id);
+                        //         return ;
+                        //     }
+                        //     currentTop = currentTop+scrollLengthEveryTime;
+                        //     window.scrollTo(0,currentTop);
+                        //     scrollNum--;
+                        // },20);
+
+                        var t = Math.abs(((targetTop - currentTop) / 100) * 300);
+                        if (t > 500) {
+                            t = 500;
+                        }
+
+
+                        var coords = {
+                            y: currentTop
+                        };
+                        var tween = new TWEEN.Tween(coords)
+                            .to({
+                                y: targetTop
+                            }, 500)
+                            .easing(TWEEN.Easing.Quadratic.In)
+                            .onUpdate(function () {
+                                console.log("y:" + coords.y);
+                                window.scrollTo(0, coords.y);
+                            })
+                            .start();
                     }
-                </script>
+                }
+            </script>
+            <script>
+                var mySwiper = new Swiper('.swiper-container', {
+                    loop: true, // 循环模式选项
+
+                    // 如果需要分页器
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+
+                    // 如果需要前进后退按钮
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+
+                    // 如果需要滚动条
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                    },
+                })
+            </script>
         </section>
-        
+
     </body>
-</html>
+
+    </html>
