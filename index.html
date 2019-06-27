@@ -219,21 +219,23 @@
                     <div class="bar-inner"></div>
                 </div>
             </nav>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
-                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
-                    <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+            <div id="mySlides">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                        <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                        <div class="swiper-slide"><img src="image/4.png" alt="图片1"></div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- 如果需要滚动条 -->
+                    <!-- <div class="swiper-scrollbar"></div> -->
                 </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-
-                <!-- 如果需要导航按钮 -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- 如果需要滚动条 -->
-                <!-- <div class="swiper-scrollbar"></div> -->
             </div>
             <style>
 
@@ -251,6 +253,10 @@
             </div> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.1/js/swiper.min.js"></script>
+            <script src="script/auto-slide-up.js"></script>
+            <script src="script/smoothly-navigation.js"></script>
+            <script src="script/sticky-topbar.js"></script>
+            <script src="script/init-swiper.js"></script>
             <script>
                 portfolio1.onclick = function () {
                     portfolioBar.className = "lines lines-1";
@@ -273,125 +279,8 @@
                 setTimeout(function () {
                     yyy();
                 }, 0);
-
-                window.onscroll = function (e) {
-                    if (window.scrollY > 0) {
-                        topNavBar.classList.add("sticky");
-                    } else {
-                        topNavBar.classList.remove("sticky");
-                    }
-                    yyy();
-                }
-
-                function yyy() {
-                    var dataScrollList = document.querySelectorAll("[data-scroll]");
-                    let currentTop = window.scrollY;
-                    let nearestIndex = 0;
-                    for (let i = 0; i < dataScrollList.length; i++) {
-                        if (Math.abs(dataScrollList[i].offsetTop - window.scrollY) < Math.abs(dataScrollList[
-                                nearestIndex].offsetTop - window.scrollY)) {
-                            nearestIndex = i;
-                        }
-                    }
-
-                    var id = dataScrollList[nearestIndex].id;
-                    dataScrollList[nearestIndex].classList.add("active");
-                    var brothers = document.querySelector("a[href = '#" + id + "']").parentNode.parentNode.children;
-                    for (let i = 0; i < brothers.length; i++) {
-                        brothers[i].classList.remove("highlight");
-                    }
-                    document.querySelector("a[href = '#" + id + "']").parentNode.classList.add("highlight");
-                }
-                var liTags = document.getElementsByClassName("menuTrigger");
-                for (let i = 0; i < liTags.length; i++) {
-                    liTags[i].onmouseenter = function (e) {
-                        let li = e.currentTarget;
-                        let ul = li.getElementsByTagName("ul")[0];
-                        li.classList.add("active");
-                    }
-
-                    liTags[i].onmouseleave = function (e) {
-                        let li = e.currentTarget;
-                        let ul = li.getElementsByTagName("ul")[0];
-                        li.classList.remove("active");
-                    }
-                }
-
-                let aTags = document.querySelectorAll("#topNavBar li a");
-                for (let i = 0; i < aTags.length; i++) {
-                    aTags[i].onclick = function (e) {
-                        e.preventDefault();
-                        console.log(e.target.getAttribute("href"));
-                        let href = e.target.getAttribute("href");
-                        let node = document.querySelector(href);
-                        var top = node.offsetTop;
-
-                        var targetTop = top - 80;
-                        var currentTop = window.scrollY;
-                        var scrollLength = targetTop - currentTop;
-                        var scrollNum = 80;
-
-
-                        function animate(time) {
-                            requestAnimationFrame(animate);
-                            TWEEN.update(time);
-                        }
-                        requestAnimationFrame(animate);
-
-                        // let id = setInterval(function(){
-                        //     console.log(11);
-                        //     if(scrollNum == 0){
-                        //         clearInterval(id);
-                        //         return ;
-                        //     }
-                        //     currentTop = currentTop+scrollLengthEveryTime;
-                        //     window.scrollTo(0,currentTop);
-                        //     scrollNum--;
-                        // },20);
-
-                        var t = Math.abs(((targetTop - currentTop) / 100) * 300);
-                        if (t > 500) {
-                            t = 500;
-                        }
-
-
-                        var coords = {
-                            y: currentTop
-                        };
-                        var tween = new TWEEN.Tween(coords)
-                            .to({
-                                y: targetTop
-                            }, 500)
-                            .easing(TWEEN.Easing.Quadratic.In)
-                            .onUpdate(function () {
-                                console.log("y:" + coords.y);
-                                window.scrollTo(0, coords.y);
-                            })
-                            .start();
-                    }
-                }
             </script>
-            <script>
-                var mySwiper = new Swiper('.swiper-container', {
-                    loop: true, // 循环模式选项
 
-                    // 如果需要分页器
-                    pagination: {
-                        el: '.swiper-pagination',
-                    },
-
-                    // 如果需要前进后退按钮
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-
-                    // 如果需要滚动条
-                    scrollbar: {
-                        el: '.swiper-scrollbar',
-                    },
-                })
-            </script>
         </section>
 
     </body>
