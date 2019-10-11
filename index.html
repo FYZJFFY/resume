@@ -237,7 +237,18 @@
                     <!-- <div class="swiper-scrollbar"></div> -->
                 </div>
             </div>
-            <style>
+        </section>
+        <section class="message" id="siteMessage">
+            <h2>留言</h2>
+            <ol class="message-list" id="messageList">
+            </ol>
+            <form id="postMessage" style="width: 700px;margin:50px auto; ">
+                <input type="text" name="author" placeholder="请输入姓名">
+                <input type="text" name="content" placeholder="请输入留言内容">
+                <input type="submit" value="提交">
+            </form>
+        </section>
+        <style>
 
             </style>
             <!-- <div class="jobs">
@@ -253,10 +264,12 @@
             </div> -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.1/js/swiper.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
             <script src="script/auto-slide-up.js"></script>
             <script src="script/smoothly-navigation.js"></script>
             <script src="script/sticky-topbar.js"></script>
             <script src="script/init-swiper.js"></script>
+            <script src="script/message.js"></script>
             <script>
                 portfolio1.onclick = function () {
                     portfolioBar.className = "lines lines-1";
@@ -280,9 +293,6 @@
                     yyy();
                 }, 0);
             </script>
-
-        </section>
-
     </body>
 
     </html>
